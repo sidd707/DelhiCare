@@ -1,4 +1,4 @@
-"use client";
+
 
 import { Bed, HeartPulse, AlertCircle, CheckCircle } from "lucide-react";
 import {
