@@ -1,13 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  useVerifyOtpAndRegisterMutation,
-} from "@/redux/apis/userApi";
-import { userExists, userNotExists } from "@/redux/reducers/userReducer";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function Signup() {
@@ -19,27 +14,37 @@ export default function Signup() {
     confirmPassword: "",
   });
 
-  const [verifyOtpAndRegister, { isLoading, isError }] = useVerifyOtpAndRegisterMutation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setUserData({ ...userData, [id]: value });
   };
 
-  const handleSubmit = async () => {
-    try {
-      const response = await verifyOtpAndRegister(userData).unwrap();
-      console.log(response);
-      dispatch(userExists(response.user));
-      toast.success("Registered Successfully");
-      navigate("/"); // Redirect to homepage or dashboard
-    } catch (err) {
-      dispatch(userNotExists());
-      console.log(err);
-      toast.error("Failed to register"); // Display error message using toast
-    }
+  const handleSubmit = () => {
+    setIsLoading(true);
+
+    // Simulating a registration process
+    setTimeout(() => {
+      if (userData.password !== userData.confirmPassword) {
+        setIsError(true);
+        toast.error("Passwords do not match");
+        setIsLoading(false);
+        return;
+      }
+
+      if (userData.email === "test@example.com") {
+        setIsError(true);
+        toast.error("User already exists");
+      } else {
+        toast.success("Registered Successfully");
+        // Simulate redirection after successful registration
+        window.location.href = "/";
+      }
+
+      setIsLoading(false);
+    }, 1000);
   };
 
   return (
@@ -116,7 +121,7 @@ export default function Signup() {
             >
               {isLoading ? 'Registering...' : 'Register'}
             </Button>
-            {isError && <p className="text-red-500 mt-2">Error: {"Failed to register"}</p>}
+            {isError && <p className="text-red-500 mt-2">Error: Registration failed</p>}
           </div>
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}
@@ -138,7 +143,3 @@ export default function Signup() {
     </div>
   );
 }
-
-
-
-

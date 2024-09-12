@@ -1,37 +1,36 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { fetchUserData, useLoginMutation } from "@/redux/apis/userApi";
-import { userExists, userNotExists } from "@/redux/reducers/userReducer";
+
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-// Assuming this is your fetchUserData function
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [login, { isLoading, error }] = useLoginMutation();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-        const user = { email, password };
-        const response = await login(user).unwrap();
-        console.log(response);
-        const userData = await fetchUserData();
-        console.log(userData);
-        dispatch(userExists(userData));
+    setIsLoading(true);
+
+    // Simulating a successful login without a backend
+    setTimeout(() => {
+      if (email === "test@example.com" && password === "password") {
         toast.success("Logged In Successfully");
-        navigate("/"); // Redirect to homepage or dashboard
-    } catch (err) {
-        console.error("Failed to login:", err);
-        dispatch(userNotExists());
-    }
-};
+        setError(false);
+        setIsLoading(false);
+        // Simulating redirect after successful login
+        window.location.href = "/";
+      } else {
+        toast.error("Invalid credentials");
+        setError(true);
+        setIsLoading(false);
+      }
+    }, 1000);
+  };
 
   return (
     <div className="w-full lg:grid lg:min-h-[600px] bg-stone-200 lg:grid-cols-2 xl:min-h-[800px]">
@@ -98,7 +97,3 @@ export default function Login() {
     </div>
   );
 }
-
-
-
-
