@@ -82,8 +82,8 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-    <div className='bg-neutral-950 text-white flex-col flex justify-center align-items'>
-    "This was my recent project, for which I worked alone on the frontend in my hackathon team."
+    <div className='bg-neutral-950 text-white flex-col flex justify-center items-center'>
+    This project was a result of my solo effort on the frontend development during a recent hackathon. Backend integration is in progress to enhance functionality.
     </div>
       <nav className={`relative z-10 ${isDropdownOpen ? 'bg-white' : backgroundColor} transition-colors duration-300`}>
        
