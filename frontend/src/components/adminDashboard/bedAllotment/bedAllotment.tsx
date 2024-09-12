@@ -11,7 +11,6 @@ import { Barchart } from "../charts/barChart";
 import BedRequest from "./bedRequest";
 import { BarAllotment } from "../charts/barAllotment";
 import AllotmentRecord from "./allotmentRecord";
-import { useBedStatsQuery } from "@/redux/apis/dashBoardApi";
 
 // Define the structure of bedTypes
 
@@ -39,15 +38,27 @@ function BedCard({ title, Icon, value, description }: BedCardProps) {
 }
 
 export function BedAllotment() {
-  const { data: bedStatsData, isLoading, isError } = useBedStatsQuery('');
-
-  if (isLoading) {
-    return <div>Loading...</div>; // Display loading state
-  }
-
-  if (isError || !bedStatsData) {
-    return <div>Something went wrong. Please try again later.</div>; // Display error state
-  }
+  // Mock data
+  const bedStatsData = {
+    data: {
+      countBeds: {
+        allocatedBedsICU: 25,
+        allocatedBedsEmergency: 40,
+        allocatedBedsGeneral: 75,
+        totalAllocatedBeds: 140,
+      },
+      bedStats: [
+        { label: "ICU", value: 25 },
+        { label: "Emergency", value: 40 },
+        { label: "General", value: 75 },
+      ],
+      lastThreeMonthsPatients: [
+        { month: "July", count: 30 },
+        { month: "August", count: 45 },
+        { month: "September", count: 60 },
+      ],
+    },
+  };
 
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
@@ -112,3 +123,4 @@ export function BedAllotment() {
     </div>
   );
 }
+
