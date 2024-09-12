@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
             <button onClick={toggleServicesDropdown} className="hover:text-blue-900">Services</button>
             <button onClick={toggleContactDropdown} className="hover:text-blue-900">Contact</button>
             <button onClick={toggleAiAssistantDropdown} className="hover:text-blue-900">AI Assistant</button>
-          
+          <a href="/dashboard" className="hover:text-blue-900">Dashboard</a>
           </div>
 
           {/* Login Button */}
