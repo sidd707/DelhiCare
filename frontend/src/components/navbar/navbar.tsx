@@ -82,7 +82,11 @@ const Navbar: React.FC = () => {
 
   return (
     <>
+    <div className='bg-neutral-950 text-white flex-col flex justify-center align-items'>
+    "This was my recent project, for which I worked alone on the frontend in my hackathon team."
+    </div>
       <nav className={`relative z-10 ${isDropdownOpen ? 'bg-white' : backgroundColor} transition-colors duration-300`}>
+       
         <div className="container mx-auto px-6 lg:px-8 py-2 flex justify-between items-center">
           {/* Logo */}
           <div className="text-2xl font-bold">
