@@ -10,7 +10,7 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: true, // Enable sourcemaps
+    sourcemap: false, // Enable sourcemaps
   },
   esbuild: {
     sourcemap: true, // Ensure esbuild generates sourcemaps
