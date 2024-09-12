@@ -5,9 +5,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "sourceMap": true,
-
-    
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -21,14 +18,17 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
 
-    ,"baseUrl": ".",
+    /* Source Map */
+    "sourceMap": true,  // Ensure source maps are generated
+
+    /* Path Mapping */
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"]
 }
+
