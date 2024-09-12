@@ -5,7 +5,7 @@ import LiveStats from "../trackrecord/liveNumber";
 import { TimelineDemo } from "../../plugins/timelineSec";
 import { Cover } from "../ui/cover";
 import HospitalFeatures from "../layouts/hospital";
-import { AiOutlineSlackSquare } from "react-icons/ai";
+
 import LocationsGrid from "../layouts/locationsGrid";
 
 const HomePage: React.FC = () => {
@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
           <div className="absolute inset-0 flex flex-col justify-center p-4 sm:p-6 md:p-8 lg:p-10">
             {/* Top-left Text */}
             <div className="absolute top-4 sm:top-8 left-4 sm:left-8 text-white flex items-center space-x-2">
-              <AiOutlineSlackSquare className="text-xl sm:text-2xl md:text-3xl" /> {/* Icon adjusted */}
+             
               <h2 className="text-base sm:text-lg md:text-xl font-bold">Delhi Care</h2>
             </div>
 
