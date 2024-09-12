@@ -8,9 +8,8 @@ import AllotmentPage from "./components/AllotmentPage/allotmentPage.js";
 import Login from "./components/home/login.js";
 import Signup from "./components/home/signup.js";
 import InventoryManagement from "./components/adminDashboard/inventory/inventoryManagement.js";
-import AppoinmentPage from "./components/AppointmentPage/appoinmentPage.js";
+import AppointmentPage from "./components/AppointmentPage/appoinmentPage.js" 
 import { ToastContainer } from "react-toastify";
-
 import 'react-toastify/dist/ReactToastify.css';
 import { SidebarPatient } from "./components/sidebar/sidebarPatient.js";
 import OverView from "./components/patientDashboard/overView/OverView.js";
@@ -27,8 +26,6 @@ function NavbarLayout() {
 
 // App component with routing setup
 function App() {
- 
-
   return (
     <Router>
       <Routes>
@@ -38,26 +35,17 @@ function App() {
           <Route path="/bedallotment" element={<AllotmentPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<Signup />} />
-          <Route path="/appointment" element={<AppoinmentPage />} />
-         
-            <Route path="/bedallotment" element={<AllotmentPage />} />
-         
-        
-            <Route path="/login" element={<Login />} />
-            <Route path="/sign-up" element={<Signup />} />
-         
+          <Route path="/appointment" element={<AppointmentPage />} /> {/* Fixed typo */}
         </Route>
 
         {/* Admin dashboard route with Sidebar */}
         <Route path="/dashboard" element={<SidebarAdmin />}>
-          {/* Nested routes within the dashboard */}
           <Route path="bedAllotment" element={<BedAllotment />} />
           <Route path="inventory" element={<InventoryManagement />} />
         </Route>
 
         {/* Patient dashboard route with Sidebar */}
         <Route path="/patientDashboard" element={<SidebarPatient />}>
-          {/* Nested routes within the patient dashboard */}
           <Route path="overview" element={<OverView />} />
         </Route>
       </Routes>
