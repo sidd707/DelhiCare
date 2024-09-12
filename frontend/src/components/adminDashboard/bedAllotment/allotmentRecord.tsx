@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -15,7 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 // Sample data for bed allotment requests
 const requests = [
@@ -47,14 +47,16 @@ const requests = [
     status: "Approved",
     date: "2023-06-26",
   },
-]
+];
 
 export default function AllotmentRecord() {
   return (
     <Card>
       <CardHeader className="px-7">
         <CardTitle>Bed Allotment Requests</CardTitle>
-        <CardDescription>Recent bed allotment requests from your hospital.</CardDescription>
+        <CardDescription>
+          Recent bed allotment requests from your hospital.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
@@ -75,9 +77,16 @@ export default function AllotmentRecord() {
                     {request.email}
                   </div>
                 </TableCell>
-                <TableCell className="hidden sm:table-cell">{request.type}</TableCell>
                 <TableCell className="hidden sm:table-cell">
-                  <Badge className="text-xs" variant={request.status === "Approved" ? "secondary" : "outline"}>
+                  {request.type}
+                </TableCell>
+                <TableCell className="hidden sm:table-cell">
+                  <Badge
+                    className="text-xs"
+                    variant={
+                      request.status === "Approved" ? "secondary" : "outline"
+                    }
+                  >
                     {request.status}
                   </Badge>
                 </TableCell>
@@ -88,5 +97,5 @@ export default function AllotmentRecord() {
         </Table>
       </CardContent>
     </Card>
-  )
+  );
 }
